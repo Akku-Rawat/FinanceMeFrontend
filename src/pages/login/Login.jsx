@@ -41,7 +41,7 @@ function Login({ setUser}) {
 
   return (
     <div className=" bg-slate-300 h-screen  flex justify-center items-center">
-      <div className="sm:h-[22rem] w-[23rem] md:h-[35rem] md:w-[33rem] lg:h-[27rem] py-3 mt-3 lg:mt-0 bg-indigo-300 rounded-xl transform transition-all hover:-translate-y-0.5 duration-300 shadow-lg hover:shadow-xl z-1">
+      <div className="sm:h-[22rem] w-[21rem] md:h-[35rem] md:w-[33rem] lg:h-[27rem] py-3 mt-3 lg:mt-0 bg-indigo-300 rounded-xl transform transition-all hover:-translate-y-0.5 duration-300 shadow-lg hover:shadow-xl z-1">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-col m-5">
             <div className="text-center text-2xl my-3">Log In to FinanceMe</div>
