@@ -36,7 +36,7 @@ function Signup({setUser}) {
 
   return (
     <div className="flex justify-center items-center h-screen bg-slate-300 ">
-      <div className="sm:h-[27rem] sm:w-[23rem] md:h-[35rem] md:w-[33rem] md:py-5 py-3 mx-5 lg:mt-0 bg-indigo-300 rounded-xl transform transition-all hover:-translate-y-0.5 duration-300 shadow-lg hover:shadow-xl z-1">
+      <div className="sm:h-[27rem] w-[21rem] sm:w-[23rem] md:h-[35rem] md:w-[33rem] md:py-5 py-3 mx-5 lg:mt-0 bg-indigo-300 rounded-xl transform transition-all hover:-translate-y-0.5 duration-300 shadow-lg hover:shadow-xl z-1">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-col m-5">
             <div className="text-center text-2xl my-3">Sign Up For FinanceMe</div>
