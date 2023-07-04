@@ -11,7 +11,7 @@ import Navbar from "../../Component/navbar/Navbar";
 
 import ".././expense/s.css";
 
-function Income({setUser, user}) {
+function Income({ setUser, user }) {
   const {
     totalExpenses,
     incomes,
@@ -22,40 +22,50 @@ function Income({setUser, user}) {
     deleteIncome,
     getExpenses,
     incomePieData,
+    updateIncome
   } = useGlobalContext();
 
   useEffect(() => {
     getIncomes();
   }, []);
+
+  let maxIncome = 0;
+  incomes.map((income) => {
+    if (income.userId === user._id) {
+      maxIncome = Math.max(income.amount, maxIncome);
+    }
+  });
+  let minIncome = 0;
+  minIncome = Number.MAX_VALUE;
+  incomes.map((income) => {
+    if (income.userId === user._id) {
+      minIncome = Math.min(income.amount, minIncome);
+    }
+  });
+
   return (
     <div className="lg:flex lg:flex-row flex flex-col">
       <div className="lg:hidden rounded-lg h-16 w-full mx-1 z-10">
-        <Navbar setUser={setUser} user={user}/>
+        <Navbar setUser={setUser} user={user} />
       </div>
       <div className="hidden lg:block lg:w-52 rounded-lg lg:h-screen w-full mx-1">
-        <Sidebar setUser={setUser} user={user}/>
+        <Sidebar setUser={setUser} user={user} />
       </div>
       <div className="bg-red-200 w-full rounded-lg lg:m-3">
         <div className="mx-3 lg:my-2 grid lg:h-full lg:grid-cols-6 lg:grid-rows-4 gap-x-7 px-3 grid-cols-1 grid-rows-1">
           <div className="lg:col-span-6 flex flex-col lg:flex-row lg:h-full lg:justify-between mt-3 lg:mt-0">
             <div className="flex items-center mt-3 lg:mt-0">
-              <MoneyStat
-                title="Min Income"
-                amount={Math.min(...incomes.map((item) => item.amount))}
-              />
+              <MoneyStat title="Min Income" amount={minIncome} />
             </div>
             <div className="flex  items-center mt-3 lg:mt-0">
-              <MoneyStat
-                title="Max Income"
-                amount={Math.max(...incomes.map((item) => item.amount))}
-              />
+              <MoneyStat title="Max Income" amount={maxIncome} />
             </div>
             <div className="flex  items-center mt-3 lg:mt-0">
-              <MoneyStat title="Total Income" amount={totalIncome()} />
+              <MoneyStat title="Total Income" amount={totalIncome(user._id)} />
             </div>
           </div>
           <div className="lg:row-span-3 lg:col-span-2 h-full">
-            <Incomeform title="Add Income" />
+            <Incomeform title="Add Income" userId={user._id} updateItem={updateIncome} myid ="64a2b96ff9211e00d86b819e"/>
           </div>
           <div className="my-5 lg:my-0 lg:col-span-4 h-max lg:row-span-3 bg-slate-200 rounded-xl transform transition-all hover:-translate-y-0.5 duration-300 shadow-lg hover:shadow-xl z-1">
             <span className="flex justify-center">
@@ -73,20 +83,23 @@ function Income({setUser, user}) {
                 var newDate = date + "/" + month + "/" + year;
                 const { _id, title, amount, category, description, type } =
                   income;
-                return (
-                  <Transaction
-                    key={_id}
-                    id={_id}
-                    title={title}
-                    description={description}
-                    amount={amount}
-                    date={newDate}
-                    type={type}
-                    category={category}
-                    deleteItem={deleteIncome}
-                    //mybg={mybg}
-                  />
-                );
+
+                if (income.userId === user._id) {
+                  return (
+                    <Transaction
+                      key={_id}
+                      id={_id}
+                      title={title}
+                      description={description}
+                      amount={amount}
+                      date={newDate}
+                      type={type}
+                      category={category}
+                      deleteItem={deleteIncome}
+                      updateItem={updateIncome}
+                    />
+                  );
+                }
               })}
             </div>
             <span className="flex justify-center">

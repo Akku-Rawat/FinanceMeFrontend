@@ -11,8 +11,8 @@ function Bar({setUser, user}) {
     getIncomes();
   }, []);
 
-  var idata = incomeData();
-  var edata = expenseData();
+  var idata = incomeData(user._id);
+  var edata = expenseData(user._id);
   return (
     <div className="sm:flex sm:flex-row flex flex-col">
       <div className=" sm:hidden sm:w-52 rounded-lg sm:h-screen h-16 w-full mx-1 z-10">
@@ -22,9 +22,7 @@ function Bar({setUser, user}) {
         <Sidebar setUser={setUser} user={user}/>
       </div>
       <div className="bg-zinc-300 w-full rounded-lg sm:m-3 flex items-center justify-center">
-        {/* <div className="flex justify-center items-center bg-slate-700 w-3/4 h-3/4"
-        >
-      </div> */}
+        
       <BarChart 
       height="600px"
       width="1300px"

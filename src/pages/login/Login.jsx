@@ -23,10 +23,7 @@ function Login({ setUser}) {
   const { loginUser } = useGlobalContext();
 
   const onSubmit = async (data) => {
-    //console.log(data);
-    //loginUser(data);
     var logres = await loginUser(data);
-    //console.log(logres);
     if (logres.data.message === "valid") {
       setUser(logres.data.user)
       localStorage.setItem('token', JSON.stringify(logres.data.user));
@@ -41,7 +38,7 @@ function Login({ setUser}) {
 
   return (
     <div className=" bg-slate-300 h-screen  flex justify-center items-center">
-      <div className="sm:h-[22rem] w-[21rem] md:h-[35rem] md:w-[33rem] lg:h-[27rem] py-3 mt-3 lg:mt-0 bg-indigo-300 rounded-xl transform transition-all hover:-translate-y-0.5 duration-300 shadow-lg hover:shadow-xl z-1">
+      <div className="sm:h-[22rem] w-[21rem] md:h-[35rem] lg:h-[27rem] md:w-[33rem] py-3 px-3 mx-5 lg:mt-0 bg-indigo-300 rounded-xl transform transition-all hover:-translate-y-0.5 duration-300 shadow-lg hover:shadow-xl z-1">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-col m-5">
             <div className="text-center text-2xl my-3">Log In to FinanceMe</div>
@@ -68,7 +65,7 @@ function Login({ setUser}) {
 
             <div className="text-center text-lg my-3">
               Not registered{" "}
-              <NavLink className=" text-blue-700 " to="/register">
+              <NavLink className=" text-blue-700 my-3" to="/register">
                 Register Here
               </NavLink>
             </div>

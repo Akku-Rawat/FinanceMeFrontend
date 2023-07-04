@@ -11,8 +11,8 @@ function Line({setUser, user}) {
     getIncomes();
   }, []);
 
-  var idata = incomeData();
-  var edata = expenseData();
+  var idata = incomeData(user._id);
+  var edata = expenseData(user._id);
 
   return (
     <div className="fsm:flex sm:flex-row flex flex-col">

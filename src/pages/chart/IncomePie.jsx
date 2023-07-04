@@ -10,7 +10,7 @@ function IncomePie({setUser, user}) {
   useEffect(() => {
     getIncomes();
   }, []);
-  var mydata = incomePieData();
+  var mydata = incomePieData(user._id);
 
   return (
     <div className="sm:flex sm:flex-row flex flex-col">

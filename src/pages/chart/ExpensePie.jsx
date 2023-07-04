@@ -9,7 +9,7 @@ function ExpensePie({setUser, user}) {
   useEffect(() => {
     getExpenses();
   }, []);
-  var mydata = expensePieData();
+  var mydata = expensePieData(user._id);
   return (
     <div className="sm:flex sm:flex-row flex flex-col">
       <div className=" sm:hidden sm:w-52 rounded-lg sm:h-screen h-16 w-full mx-1 z-10">
