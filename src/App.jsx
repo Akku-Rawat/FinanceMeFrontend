@@ -21,23 +21,14 @@ import Bar from "./pages/chart/Bar";
 import { useState, useEffect } from "react";
 
 function App() {
-  const global = useGlobalContext();
   const [user, setUser] = useState({});
-  // useEffect(() => {
-  //   window.localStorage.setItem("MY_LOG_STATE", user);
-  //   const data1 = window.localStorage.getItem("MY_APP_STATE");
-  //   if (data1 !== null) setUser(user);
-  // }, []);
-  // useEffect(() => {
-  //   window.localStorage.setItem("MY_LOG_STATE", user);
-  // }, [user]);
+  const global = useGlobalContext();
   useEffect(() => {
 		var token = localStorage.getItem('token')
 		if (token) {
 			const user = JSON.parse(token);
 			if (!user) {
 				localStorage.removeItem('token')
-				//history.replace('/login')
 			} else {
 				setUser(user)
 			}
