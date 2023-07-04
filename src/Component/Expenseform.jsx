@@ -27,11 +27,9 @@ function Expenseform(prop) {
   const { addExpense, getIncomes, error, setError } = useGlobalContext();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    data.userId = prop.userId;
     addExpense(data);
   };
-
-  const [startDate, setStartDate] = useState(new Date());
 
   console.log(errors);
 
