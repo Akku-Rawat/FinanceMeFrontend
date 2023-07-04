@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useForm , Controller } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -26,14 +26,13 @@ function Expenseform(prop) {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const { addIncome} = useGlobalContext();
+  const { addIncome } = useGlobalContext();
+
 
   const onSubmit = async (data) => {
-    console.log(data);
+    data.userId = prop.userId;
     addIncome(data);
   };
-  const [startDate, setStartDate] = useState(new Date());
-  console.log(errors);
   return (
     <div className="sm:h-[30rem] py-3 mt-3 lg:mt-0 bg-indigo-300 rounded-xl transform transition-all hover:-translate-y-0.5 duration-300 shadow-lg hover:shadow-xl z-1">
       <form onSubmit={handleSubmit(onSubmit)}>

@@ -9,7 +9,6 @@ import { NavLink } from "react-router-dom";
 function Sidebar({setUser, user}) {
   const logOut=() =>{
     setUser({})
-    //localStorage.clear();
 
   }
   return (

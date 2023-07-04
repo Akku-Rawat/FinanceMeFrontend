@@ -4,17 +4,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+
 import { NavLink } from "react-router-dom";
+
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import MoneyOffIcon from "@mui/icons-material/MoneyOff";
 function Navbar({ setUser, user }) {
-  // let Links = [
-  //   { name: "DashBoard", link: "/" },
-  //   { name: "Expense", link: "/expense" },
-  //   { name: "Income", link: "/income" },
-  //   // {name:"Line Chart",link:"/line"},
-  //   // {name:"Bar Chart",link:"/bar"},
-  //   // {name:"Expense Pie",link:"/epie"},
-  //   // {name:"Income Pie",link:"/ipie"},
-  // ];
   let [open, setOpen] = useState(false);
   return (
     <div className="lg:hidden shadow-md w-full fixed top-0 left-0">
@@ -23,8 +19,6 @@ function Navbar({ setUser, user }) {
           className="font-bold text-xl sm:text-2xl cursor-pointer flex items-center font-[Poppins] 
       text-gray-800"
         >
-          {/* <span className='text-3xl text-indigo-600 mr-1 pt-2'>
-        </span> */}
           FinanceMe
         </div>
 
@@ -41,7 +35,6 @@ function Navbar({ setUser, user }) {
           }`}
         >
           <li className="lg:ml-8 text-lg lg:my-0 my-7">
-            {/* <AccountCircleIcon /> */}
             {user.username}
           </li>
           <NavLink to="/">
@@ -53,9 +46,9 @@ function Navbar({ setUser, user }) {
           <NavLink to="/income">
             <li className="lg:ml-8 text-lg lg:my-0 my-7">Income</li>
           </NavLink>
+
           <button onClick={() => setUser({})}>
             <li>
-              {/* <LogoutIcon /> */}
               Logout
             </li>
           </button>

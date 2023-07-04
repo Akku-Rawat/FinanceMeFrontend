@@ -23,7 +23,6 @@ ChartJS.register(
 );
 
 const options = {
-  //responsive: true,
   plugins: {
     legend: {
       position: 'top',
@@ -68,14 +67,12 @@ function LineGraph(prop) {
     ],
   };
 
-  //const {width, height} = useWindowSize();
   return (
     <div className="sm:h-auto sm:w-auto w-full h-full">
       <Line 
       data={data}
       options={options}
       height={prop.height} width={prop.width}
-      //height={height} width={width}
       />
     </div>
   );
