@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
-const BASE_URL = "https://financemeapi.up.railway.app/api/v1/";
+//const BASE_URL = "https://financemeapi.up.railway.app/api/v1/";
+const BASE_URL = "https://financeme-yesw.onrender.com/api/v1/";
+
 
 const GlobalContext = React.createContext();
 
