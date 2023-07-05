@@ -7,13 +7,13 @@ import { useGlobalContext } from "../context/globalContext";
 
 import "react-datepicker/dist/react-datepicker.css";
 const schema = yup
-  .object({
-    title: yup.string().required(),
-    description: yup.string().required(),
-    //Date: yup.string().required(),
-    amount: yup.number().positive().integer().required("Required Field"),
-  })
-  .required();
+.object({
+  title: yup.string().required().min(1).max(12,"title cant be more than 12 characters"),
+  description: yup.string().required().min(1).max(16,"description cant be more than 16 characters"),
+  //Date: yup.string().required(),
+  amount: yup.number("Should Be A Number").typeError('Amount field required').positive("Should Be A Positive Number").integer("Should Be A Number").required().max(100000000,"Amount cant be more than 100000000"),
+})
+.required();
 
 function ExpenseUpdate(prop) {
   const { updateExpense, getExpenseById } =
@@ -57,7 +57,7 @@ function ExpenseUpdate(prop) {
             {...register("title")}
           />
 
-          <span className="text-red-500 text-xs">{errors.Title?.message}</span>
+          <span className="text-red-500 text-xs">{errors.title?.message}</span>
           <select
             className="col-span-1  border-2 border-blue-500 my-2 sm:my-3 py-3 px-2 bg-teal-50 rounded-md"
             {...register("category")}
@@ -79,7 +79,7 @@ function ExpenseUpdate(prop) {
             name="amount"
             {...register("amount")}
           />
-          <span className="text-red-500 text-xs">{errors.Amount?.message}</span>
+          <span className="text-red-500 text-xs">{errors.amount?.message}</span>
           <Controller
             control={control}
             name="date"
@@ -101,7 +101,7 @@ function ExpenseUpdate(prop) {
             {...register("description")}
           />
           <span className="text-red-500 text-xs">
-            {errors.Description?.message}
+            {errors.description?.message}
           </span>
           <button
             className="col-span-1 my-2 sm:my-3 py-2 border-2 border-blue-700 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white px-4 hover:border-transparent rounded-full pb-2"
