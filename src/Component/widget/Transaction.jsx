@@ -123,7 +123,7 @@ function Transaction({
       </div>
       <div
         className={
-          "z-1 grid grid-cols-4 sm:grid-cols-6 my-2 h-16 sm:h-20 w-full transform rounded-xl  shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl bg-gradient-to-r " +
+          "z-1 grid sm:gap-0 grid-cols-6 sm:grid-cols-6 my-2 h-16 sm:h-20 w-full transform rounded-xl  shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl bg-gradient-to-r " +
           mybg
         }
       >
@@ -135,10 +135,10 @@ function Transaction({
           />
           <FontAwesomeIcon className="sm:hidden" icon={myicon} size="sm" />
         </div>
-        <div className="m-1 sm:col-span-4 text-sm sm:text-xl font-sans">
+        <div className="m-1 sm:col-span-4 text-sm sm:text-xl font-sans col-span-2">
           {title}
         </div>
-        <div className="m-1 text-xs sm:text-lg font-sans sm:hidden">{date}</div>
+        <div className="m-1 text-xs sm:text-lg font-sans sm:hidden col-span-2">{date}</div>
         <div className="m-auto flex justify-items-center items-center row-span-2 flex-col">
           <a data-tooltip-id="delete-tooltip" data-tooltip-content="Delete">
             <button className="" onClick={() => deleteItem(id)}>
@@ -167,11 +167,11 @@ function Transaction({
             />
           </button>
         </div>
-        <div className="m-1 text-xs sm:text-lg font-sans">{amount}</div>
+        <div className="m-1 text-xs sm:text-lg font-sans col-span-2 sm:col-span-1">{amount}</div>
         <div className="m-1 hidden sm:block text-xs sm:text-lg font-sans">
           {date}
         </div>
-        <div className="m-1 sm:col-span-2 text-xs sm:text-lg font-sans">
+        <div className="m-1 sm:col-span-2 text-xs sm:text-lg font-sans col-span-2">
           {description}
         </div>
         <Tooltip id="delete-tooltip" />
