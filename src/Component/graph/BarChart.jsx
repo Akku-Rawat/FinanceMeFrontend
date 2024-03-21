@@ -34,18 +34,18 @@ export const options = {
 
 function BarChart(prop) {
   const labels = [
-    "Jan",
-    "Feb",
-    "Ma",
-    "Apr",
+    "January",
+    "February",
+    "March",
+    "April",
     "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
   ];
   const data = {
     labels,

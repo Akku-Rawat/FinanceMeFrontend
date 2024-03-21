@@ -23,7 +23,6 @@ ChartJS.register(
 );
 
 const options = {
-  //responsive: true,
   plugins: {
     legend: {
       position: 'top',
@@ -37,18 +36,18 @@ const options = {
 
 function LineGraph(prop) {
   const labels = [
-    "Jan",
-    "Feb",
-    "Ma",
-    "Apr",
+    "January",
+    "February",
+    "March",
+    "April",
     "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
   ];
   const data = {
     labels,
@@ -68,14 +67,12 @@ function LineGraph(prop) {
     ],
   };
 
-  //const {width, height} = useWindowSize();
   return (
     <div className="sm:h-auto sm:w-auto w-full h-full">
       <Line 
       data={data}
       options={options}
       height={prop.height} width={prop.width}
-      //height={height} width={width}
       />
     </div>
   );
