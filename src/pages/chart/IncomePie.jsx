@@ -10,7 +10,7 @@ function IncomePie({setUser, user}) {
   useEffect(() => {
     getIncomes();
   }, []);
-  var mydata = incomePieData(user._id);
+  var mydata = incomePieData();
 
   return (
     <div className="sm:flex sm:flex-row flex flex-col">
@@ -20,7 +20,7 @@ function IncomePie({setUser, user}) {
       <div className=" hidden sm:block sm:w-52 rounded-lg sm:h-screen  w-full mx-1">
         <Sidebar setUser={setUser} user={user}/>
       </div>
-      <div className="bg-zinc-300 w-full rounded-lg sm:m-3 flex items-center justify-center">
+      <div className="bg-emerald-100 border-2 w-full rounded-lg sm:m-3 flex items-center justify-center">
         <PieChart
           height="600px"
           width="600px"

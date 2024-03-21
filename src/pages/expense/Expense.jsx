@@ -6,12 +6,11 @@ import Transaction from "../../Component/widget/Transaction";
 import { useGlobalContext } from "../../context/globalContext";
 import KeyboardDoubleArrowUpIcon from "@mui/icons-material/KeyboardDoubleArrowUp";
 import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrowDown";
-import ExpenseUpdate from "../../Component/ExpenseUpdate";
 
 import "./s.css";
 import Navbar from "../../Component/navbar/Navbar";
 
-function Expense({ setUser, user }) {
+function Expense({setUser, user}) {
   const {
     totalExpenses,
     incomes,
@@ -23,55 +22,51 @@ function Expense({ setUser, user }) {
     getExpenses,
   } = useGlobalContext();
 
-
-
   useEffect(() => {
+    //getIncomes()
     getExpenses();
   }, []);
-  let maxExpense = 0;
-  expenses.map((income) => {
-    if (income.userId === user._id) {
-      maxExpense = Math.max(income.amount, maxExpense);
-    }
-  });
-  let minExpense = 0;
-  minExpense = Number.MAX_VALUE;
-  expenses.map((income) => {
-    if (income.userId === user._id) {
-      minExpense = Math.min(income.amount, minExpense);
-    }
-  });
+  const titleRef = useRef();
+
+  const scrollUp = () => {
+    // window.scrollBy(0,-20)
+    // console.log("scrollUp")
+    titleRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <div className="lg:flex lg:flex-row flex flex-col">
       <div className=" lg:hidden lg:w-52 rounded-lg lg:h-screen h-16 w-full mx-1 z-10">
-        <Navbar setUser={setUser} user={user} />
+        <Navbar setUser={setUser} user={user}/>
       </div>
       <div className=" hidden lg:block lg:w-52 rounded-lg lg:h-screen  w-full mx-1">
-        <Sidebar setUser={setUser} user={user} />
+        <Sidebar setUser={setUser} user={user}/>
       </div>
-      <div className="bg-red-200 w-full rounded-lg lg:m-3">
+      <div className="bg-emerald-50 border-2 border-blue-500 w-full rounded-lg lg:m-3">
         <div className="mx-3 lg:my-2 grid lg:h-full lg:grid-cols-6 lg:grid-rows-4 gap-x-7 px-3 grid-cols-1 grid-rows-1">
           <div className="lg:col-span-6 flex flex-col lg:flex-row lg:h-full lg:justify-between mt-3 lg:mt-0 ">
             <div className="flex items-center mt-3 lg:mt-0">
-              <MoneyStat title="Min Expense" amount={minExpense} />
-            </div>
-            <div className="flex items-center mt-3 lg:mt-0">
-              <MoneyStat title="Max Expense" amount={maxExpense} />
+              <MoneyStat
+                title="Min Expense"
+                amount={Math.min(...expenses.map((item) => item.amount))}
+              />
             </div>
             <div className="flex items-center mt-3 lg:mt-0">
               <MoneyStat
-                title="Total Expense"
-                amount={totalExpenses(user._id)}
+                title="Max Expense"
+                amount={Math.max(...expenses.map((item) => item.amount))}
               />
+            </div>
+            <div className="flex items-center mt-3 lg:mt-0">
+              <MoneyStat title="Total Expense" amount={totalExpenses()} />
             </div>
           </div>
           <div className="lg:row-span-3 lg:col-span-2">
-            <Expenseform title="Add Expense" userId={user._id} />
+            <Expenseform title="Add Expense" />
           </div>
-          <div className="my-5 h-fit lg:my-0 lg:col-span-4 lg:row-span-3 bg-slate-200 rounded-xl transform transition-all hover:-translate-y-0.5 duration-300 shadow-lg hover:shadow-xl z-1">
+          <div className="my-5 h-fit lg:my-0 lg:col-span-4 lg:row-span-3 bg-red-100 border-2 border-red-500 rounded-xl transform transition-all hover:-translate-y-0.5 duration-300 shadow-lg hover:shadow-xl z-1">
             <span className="flex justify-center">
-              <button >
+              <button onClick={scrollUp}>
                 <KeyboardDoubleArrowUpIcon />
               </button>
             </span>
@@ -86,23 +81,22 @@ function Expense({ setUser, user }) {
                 const { _id, title, amount, category, description, type } =
                   income;
 
-                if (income.userId === user._id) {
-                  return (
-                    <Transaction
-                      key={_id}
-                      id={_id}
-                      title={title}
-                      description={description}
-                      amount={amount}
-                      date={newDate}
-                      type={type}
-                      category={category}
-                      deleteItem={deleteExpense}
-                    />
-                  );
-                }
+                //var mybg = "from-indigo-200 from-20% via-sky-200 via-40% to-emerald-200 to-90%";
+                return (
+                  <Transaction
+                    key={_id}
+                    id={_id}
+                    title={title}
+                    description={description}
+                    amount={amount}
+                    date={newDate}
+                    type={type}
+                    category={category}
+                    deleteItem={deleteExpense}
+                    //mybg={mybg}
+                  />
+                );
               })}
-              
             </div>
             <span className="flex justify-center">
               <button>

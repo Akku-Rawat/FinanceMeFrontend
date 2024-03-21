@@ -36,10 +36,10 @@ function Signup({setUser}) {
 
   return (
     <div className="flex justify-center items-center h-screen bg-slate-300 ">
-      <div className="sm:h-[27rem] sm:w-[23rem] w-[21rem] md:h-[35rem] md:w-[33rem] md:py-5 py-3 mt-3 lg:mt-0 bg-indigo-300 rounded-xl transform transition-all hover:-translate-y-0.5 duration-300 shadow-lg hover:shadow-xl z-1">
+      <div className="sm:h-[27rem] sm:w-[23rem] md:h-[35rem] md:w-[33rem] md:py-5 py-3 mt-3 lg:mt-0 bg-indigo-300 rounded-xl transform transition-all hover:-translate-y-0.5 duration-300 shadow-lg hover:shadow-xl z-1">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-col m-5">
-            <div className="text-center text-2xl my-3">Sign Up For FinanceMe</div>
+            <div className="text-center text-2xl">Sign Up For FinanceMe</div>
             <input
             name="username"
               type="text"
@@ -63,7 +63,7 @@ function Signup({setUser}) {
             />
             <button type="submit" className="my-2 sm:my-3 md:py-5 py-3 border-2 border-blue-700 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white px-4 hover:border-transparent rounded-full pb-2" >Register</button>
 
-            <div className="text-center text-lg my-3">Already registered <NavLink className=" text-blue-700 " to="/login">Login Here</NavLink></div>
+            <div className="text-center text-lg">Already registered <NavLink className=" text-blue-700 " to="/login">Login Here</NavLink></div>
           </div>
         </form>
       </div>

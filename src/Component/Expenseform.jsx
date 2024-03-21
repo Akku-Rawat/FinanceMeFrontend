@@ -9,10 +9,10 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const schema = yup
   .object({
-    title: yup.string().required().min(1).max(12,"title cant be more than 12 characters"),
-    description: yup.string().required().min(1).max(16,"description cant be more than 16 characters"),
+    title: yup.string().required(),
+    description: yup.string().required(),
     //Date: yup.string().required(),
-    amount: yup.number("Should Be A Number").typeError('Amount field required').positive("Should Be A Positive Number").integer("Should Be A Number").required().max(100000000,"Amount cant be more than 100000000"),
+    amount: yup.number().positive().integer().required("Required Field"),
   })
   .required();
 
@@ -20,7 +20,6 @@ function Expenseform(prop) {
   const {
     register,
     handleSubmit,
-    noValidate,
     control,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
@@ -28,26 +27,28 @@ function Expenseform(prop) {
   const { addExpense, getIncomes, error, setError } = useGlobalContext();
 
   const onSubmit = async (data) => {
-    data.userId = prop.userId;
+    console.log(data);
     addExpense(data);
   };
+
+  const [startDate, setStartDate] = useState(new Date());
 
   console.log(errors);
 
   return (
-    <div className="sm:h-[30rem] py-3 mt-3 lg:mt-0 bg-indigo-300 rounded-xl transform transition-all hover:-translate-y-0.5 duration-300 shadow-lg hover:shadow-xl z-1">
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <div className="mx-2 my-1 flex flex-col">
+    <div className="sm:h-[30rem] py-3 mt-3 lg:mt-0 bg-red-100 border-2 border-red-500 rounded-xl transform transition-all hover:-translate-y-0.5 duration-300 shadow-lg hover:shadow-xl z-1">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="m-3 flex flex-col gap-1">
           <input
-            className="col-span-2 border-2 border-blue-500 my-2 sm:my-3 py-3 px-2 bg-teal-50 rounded-md "  { ...errors?.myInput?.message ? "border-red-700" : "border-blue-700" }
+            className="col-span-2 border-2 border-red-500 my-2 sm:my-3 py-3 px-2 bg-teal-50 rounded-md"
             type="text"
             name="title"
             placeholder="Title"
             {...register("title")}
           />
-          <span className="text-red-500 text-xs">{errors.title?.message}</span>
+          <span className="text-red-500 text-xs">{errors.Title?.message}</span>
           <select
-            className="col-span-1  border-2 border-blue-500 my-2 sm:my-3 py-3 px-2 bg-teal-50 rounded-md"
+            className="col-span-1  border-2 border-red-500 my-2 sm:my-3 py-3 px-2 bg-teal-50 rounded-md"
             {...register("category")}
           >
             <option value="Shopping">Shopping</option>
@@ -61,18 +62,17 @@ function Expenseform(prop) {
             <option value="Others"> Others</option>
           </select>
           <input
-            className="col-span-2 border-2 border-blue-500 my-2 sm:my-3 py-3 px-2 bg-teal-50 rounded-md"
+            className="col-span-2 border-2 border-red-500 my-2 sm:my-3 py-3 px-2 bg-teal-50 rounded-md"
             type="number"
             placeholder="Amount"
             name="amount"
             {...register("amount")}
           />
-          <span className="text-red-500 text-xs">{errors.amount?.message}</span>
+          <span className="text-red-500 text-xs">{errors.Amount?.message}</span>
           <Controller
             control={control}
             name="date"
             className="my-2 sm:my-3 py-3"
-            rules={{ required: true }}
             render={({ field: { onChange, value, ref } }) => (
               <DatePicker
                 placeholderText="Select date"
@@ -84,16 +84,16 @@ function Expenseform(prop) {
           />
           <span className="text-red-500 text-xs">{errors.date?.message}</span>
           <textarea
-            className="col-span-2 border-2 border-blue-500 my-2 sm:my-3 py-3 px-2 bg-teal-50 rounded-md"
+            className="col-span-2 border-2 border-red-500 my-2 sm:my-3 py-3 px-2 bg-teal-50 rounded-md"
             placeholder="Description"
             name="description"
             {...register("description")}
           />
           <span className="text-red-500 text-xs">
-            {errors.description?.message}
+            {errors.Description?.message}
           </span>
           <button
-            className="col-span-1 my-2 sm:my-3 py-3 border-2 border-blue-700 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white px-4 hover:border-transparent rounded-full pb-2"
+            className="col-span-1 my-2 sm:my-3 py-2 border-2 border-red-500 bg-transparent hover:bg-red-500 text-red-500 font-semibold hover:text-white px-4 hover:border-transparent rounded-full pb-2"
             type="submit"
           >
             {prop.title}
