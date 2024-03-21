@@ -9,10 +9,11 @@ import { NavLink } from "react-router-dom";
 function Sidebar({setUser, user}) {
   const logOut=() =>{
     setUser({})
+    //localStorage.clear();
 
   }
   return (
-    <div className=" bg-indigo-950 text-white text-md font-sans min-h-screen px-3 py-2">
+    <div className=" bg-violet-700 text-white text-md font-sans min-h-screen px-3 py-2">
       <div className="flex">
         <span className="logo">FinanceMe</span>
       </div>

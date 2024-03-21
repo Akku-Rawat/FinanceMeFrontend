@@ -11,8 +11,8 @@ function Line({setUser, user}) {
     getIncomes();
   }, []);
 
-  var idata = incomeData(user._id);
-  var edata = expenseData(user._id);
+  var idata = incomeData();
+  var edata = expenseData();
 
   return (
     <div className="fsm:flex sm:flex-row flex flex-col">
@@ -22,7 +22,7 @@ function Line({setUser, user}) {
       <div className=" hidden sm:block sm:w-52 rounded-lg sm:h-screen  w-full mx-1">
         <Sidebar setUser={setUser} user={user}/>
       </div>
-      <div className="bg-zinc-300 w-full rounded-lg sm:m-3 p-7">
+      <div className="bg-emerald-100 border-2 w-full rounded-lg sm:m-3 p-7">
         <LineGraph height="400px" width="900px" data1={idata} data2={edata}/>
       </div>
     </div>
