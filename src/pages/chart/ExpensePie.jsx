@@ -9,7 +9,7 @@ function ExpensePie({setUser, user}) {
   useEffect(() => {
     getExpenses();
   }, []);
-  var mydata = expensePieData();
+  var mydata = expensePieData(user._id);
   return (
     <div className="sm:flex sm:flex-row flex flex-col">
       <div className=" sm:hidden sm:w-52 rounded-lg sm:h-screen h-16 w-full mx-1 z-10">
@@ -18,7 +18,7 @@ function ExpensePie({setUser, user}) {
       <div className=" hidden sm:block sm:w-52 rounded-lg sm:h-screen  w-full mx-1">
         <Sidebar setUser={setUser} user={user}/>
       </div>
-      <div className="bg-emerald-100 border-2 w-full rounded-lg sm:m-3 flex items-center justify-center">
+      <div className="bg-zinc-300 w-full rounded-lg sm:m-3 flex items-center justify-center">
         <ExpensePieChart
         height="600px"
         width="600px"

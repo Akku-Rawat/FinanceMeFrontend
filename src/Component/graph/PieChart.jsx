@@ -16,7 +16,6 @@ function PieChart(prop) {
     datasets: [
       {
         label: "Transaction",
-        //data: [12, 19, 3, 5, 2,7,9,11,13],
         data: prop.data,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
@@ -46,10 +45,6 @@ function PieChart(prop) {
         display: prop.display,
         position: prop.pos
       },
-      // title: {
-        //   display: true,
-        //   text: 'Pie Chart',
-        // },
       },
     };
     console.log(prop.mydata)

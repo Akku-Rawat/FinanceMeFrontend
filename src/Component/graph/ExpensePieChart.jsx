@@ -10,7 +10,6 @@ function ExpensePieChart(prop) {
     datasets: [
       {
         label: "Transactions",
-        //data: [12, 19, 3, 5, 2,7,9,11,13],
         data: prop.data,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
