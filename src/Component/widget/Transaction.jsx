@@ -37,8 +37,8 @@ function Transaction({
 }) {
   var mybg =
     type === "expense"
-      ? "from-indigo-200 from-20% via-sky-200 via-40% to-emerald-200 to-90%"
-      : "from-emerald-200 from-20% via-sky-200-40% to-indigo-200 to-90%";
+      ? "bg-red-300"
+      : "bg-green-200";
 
   const categoryIcon = () => {
     switch (category) {
